@@ -12,7 +12,7 @@ image:
   repository: demonsthere/dicerlogger
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "master"
+  tag: "latest"
 
 imagePullSecrets: []
 nameOverride: ""
