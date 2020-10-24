@@ -3,7 +3,10 @@
 export DICELOGGER_NS="dicelogger"
 export LOKI_NS="loki"
 
-minikube start
+minikube start \
+	--memory=4096 \
+	--cpus=2 \
+	--kubernetes-version='v1.16'
 
 helm install dicelogger deploy/helm/dicelogger \
     -n "${DICELOGGER_NS}" \

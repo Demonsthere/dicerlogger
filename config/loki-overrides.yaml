@@ -6,7 +6,7 @@ fluent-bit:
     autoKubernetesLabels: true
     labels: '{custom_error_level="$custom_error_level"}'
     parsers:
-    - Name: dicelogger
+    - Name: custom_error_level
       Format: regex
       Regex: "(?<custom_error_level>error|critical|fatal)"
     labelMap:
@@ -20,10 +20,7 @@ fluent-bit:
         pod_name: instance
       stream: stream
       custom_error_level: custom_error_level
-    extraOutputs: # Allow to define extra outputs in addition to the one automatically created
-    - Name: stdout
-      Format: json
-      json_date_format: time  
+
 promtail:
   enabled: false
 grafana:

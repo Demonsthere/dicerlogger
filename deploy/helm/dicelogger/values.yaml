@@ -3,8 +3,29 @@
 # Declare variables to be passed into your templates.
 
 env:
+  - name: LINE_FILE
+    value: /config/config.txt
   - name: TIME_INTERVAL
     value: "500"
+
+loglines: |-
+  Spicy error jalapeno bacon ipsum dolor
+  Duis aliqua boudin fatal
+  id laborum corned beef salami critical
+  Buffalo irure info cillum leberkas capicola
+  critical sed do eiusmod tempor
+  Spare ribs ham critical shoulder laboris
+  Ut enim ad minim veniam error
+  Landjaeger fatback esse commodo error
+  ullamco info laboris nisi ut aliquip
+  ex ea fatal commodo consequat
+  Duis aute irure dolor fatal
+  error in info reprehenderit
+  Non ham hock velit fatal
+  info eu fugiat nulla pariatur
+  error Excepteur sint occaecat
+  cupidatat fatal non proident
+  Fatback qui fatal fugiat shank
 
 replicaCount: 1
 

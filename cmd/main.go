@@ -13,7 +13,10 @@ func main() {
 	env.InitConfig()
 	log.SetFormatter(&log.TextFormatter{})
 	d := dice.NewDice(env.Config.DiceSize)
-	ll := logline.NewLogLines()
+	ll, err := logline.NewLogLinesFromFile(env.Config.LineFile)
+	if err != nil {
+		log.Fatal(err)
+	}
 	for range time.NewTicker(time.Duration(env.Config.TimeInterval) * time.Millisecond).C {
 		log.Info(ll.GetLine(d.Roll()))
 	}
