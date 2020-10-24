@@ -15,10 +15,6 @@ func main() {
 	d := dice.NewDice(env.Config.DiceSize)
 	ll := logline.NewLogLines()
 	for range time.NewTicker(time.Duration(env.Config.TimeInterval) * time.Millisecond).C {
-		rolling(d, ll)
+		log.Info(ll.GetLine(d.Roll()))
 	}
-}
-
-func rolling(d *dice.Dice, ll *logline.LogLines) {
-	log.Info(ll.GetLine(d.Roll()))
 }
