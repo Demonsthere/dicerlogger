@@ -1,0 +1,30 @@
+fluent-bit:
+  enabled: true
+  config:
+    batchWait: "1s"
+    batchSize: "1048576"
+    autoKubernetesLabels: true
+    labels: '{custom_error_level="$custom_error_level"}'
+    parsers:
+    - Name: dicelogger
+      Format: regex
+      Regex: "(?<custom_error_level>error|critical|fatal)"
+    labelMap:
+      kubernetes:
+        namespace_name: namespace
+        labels:
+          app.kubernetes.io/name: app
+          helm.sh/chart: chart
+        host: node
+        container_name: container
+        pod_name: instance
+      stream: stream
+      custom_error_level: custom_error_level
+    extraOutputs: # Allow to define extra outputs in addition to the one automatically created
+    - Name: stdout
+      Format: json
+      json_date_format: time  
+promtail:
+  enabled: false
+grafana:
+  enabled: true
