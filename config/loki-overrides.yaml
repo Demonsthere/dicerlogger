@@ -7,6 +7,11 @@ fluent-bit:
     - kubernetes
     - stream
     - custom
+    customFieldExists:
+    - my_custom_label
+    - error
+    - critical
+    - fatal
     labelMap:
       kubernetes:
         namespace_name: namespace
@@ -21,7 +26,7 @@ fluent-bit:
         my_custom_label: custom_error_level
   image:
     repository: demonsthere/fluent-bit-loki
-    tag: 10
+    tag: custom-field
     pullPolicy: Always
 
 promtail:

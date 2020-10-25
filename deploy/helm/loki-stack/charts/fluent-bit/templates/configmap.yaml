@@ -49,6 +49,9 @@ data:
         LabelMapPath /fluent-bit/etc/labelmap.json
         LineFormat {{ .Values.config.lineFormat }}
         LogLevel {{ .Values.config.loglevel }}
+        {{- if .Values.config.customFieldExists }}
+        CustomFieldExists {{ include "helm-toolkit.utils.joinListWithComma" .Values.config.customFieldExists }}
+        {{- end }}
     {{- range $extraOutput := .Values.config.extraOutputs }}
     [OUTPUT]
     {{- range $key,$value := $extraOutput }}
