@@ -3,12 +3,10 @@ fluent-bit:
   config:
     batchWait: "1s"
     batchSize: "1048576"
-    autoKubernetesLabels: true
-    labels: '{custom_error_level="$custom_error_level"}'
-    parsers:
-    - Name: custom_error_level
-      Format: regex
-      Regex: "(?<custom_error_level>error|critical|fatal)"
+    removeKeys:
+    - kubernetes
+    - stream
+    - custom
     labelMap:
       kubernetes:
         namespace_name: namespace
@@ -19,7 +17,12 @@ fluent-bit:
         container_name: container
         pod_name: instance
       stream: stream
-      custom_error_level: custom_error_level
+      custom:
+        my_custom_label: custom_error_level
+  image:
+    repository: demonsthere/fluent-bit-loki
+    tag: 10
+    pullPolicy: Always
 
 promtail:
   enabled: false
